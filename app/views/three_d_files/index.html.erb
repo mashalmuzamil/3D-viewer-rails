@@ -1,0 +1,65 @@
+  <head>
+  
+   
+    <style> 
+      body { margin: 0; } canvas { display: block; }
+
+     </style>
+    
+    
+    <%= javascript_include_tag 'lib/STLLoader',media: 'all' %> 
+    <%= javascript_include_tag 'lib/GLTFLoader',media: 'all' %> 
+    <%= javascript_include_tag 'lib/PCDLoader.js',media: 'all' %> 
+    <%= javascript_include_tag 'lib/dat.gui.min.js',media: 'all' %> 
+
+
+  </head>
+
+
+<div class="content">   
+<% if !flash[:notice].blank? %>   
+   <div>   
+      <%= flash[:notice] %>   
+   </div>   
+<% end %>   
+  
+<br>   
+  <h3>
+<%= link_to "Upload 3D Model", new_three_d_file_url %>   </h3>
+<br>   
+<br>   
+  
+<table border="1" >   
+   <thead>   
+      <tr>
+         <th style="text-align:center">Sr. No</th>    
+         <th style="text-align:center">Title</th>   
+         <th style="text-align:center">Action </th>   
+ 
+      </tr>   
+   </thead>   
+      
+   <tbody>   
+      <% @ThreeDFiles.each do |threedfile| %>   
+            
+         <tr> 
+
+           <td><%= threedfile.id %></td>     
+            <td><%= threedfile.name %></td>   
+            
+            <td><%= link_to "Delete",  threedfile, method: :delete, confirm: "Are you sure you want to delete #{threedfile.name}?" %>
+            
+
+             <%= link_to "Show", three_d_file_path(threedfile)  %>
+             
+             <%= link_to "Embed", oembed_path(threedfile.id) %></td>
+         </tr>   
+            
+      <% end %>   
+   </tbody>   
+      
+</table>   
+</div>  
+
+
+

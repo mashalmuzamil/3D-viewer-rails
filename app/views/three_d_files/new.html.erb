@@ -1,0 +1,23 @@
+
+
+
+<%= render 'error_list' %>  
+  
+<div class ="content">   
+
+<h1 >Upload 3D Model</h1>
+   <%= form_for @ThreeDFile, html: { multipart: true } do |f| %>   
+    <p> <%= f.label :name %>  
+     <%= f.text_field :name %>  </p>   
+      <br> 
+  <p align = "left">  
+  	
+  	<%= f.label :attachment %>  
+   <div class ="attachment"> <%= f.file_field :attachment %> </div>
+      <br>   
+       </p>
+      <%= f.submit "Submit" %>   
+   <% end %>   
+ 
+  
+</div>  

@@ -1,0 +1,12 @@
+
+<% if @ThreeDFile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ThreeDFile.errors.count, "error") %> prohibited this Model from being uploaded </h2>
+
+      <ul>
+      <% @ThreeDFile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
